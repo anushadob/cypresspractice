@@ -1,0 +1,11 @@
+allure-results
+cypress\screenshots
+cypress\node_modules
+cypress\downloads
+cypress\reports
+cypress\e2e\1-getting-started
+cypress\e2e\2-advanced-examples
+cypress\node_modules
+node_modules
+B23 Cypress Videos
+

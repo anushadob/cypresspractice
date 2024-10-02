@@ -1,0 +1,109 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2024-09-27T11:32:25.669Z",
+    "end": "2024-09-27T11:32:58.587Z",
+    "duration": 32918,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "b1f4269a-8cd8-41ba-9818-4537f95686ce",
+      "title": "",
+      "fullFile": "cypress\\e2e\\modifiedassignment1.cy.js",
+      "file": "cypress\\e2e\\modifiedassignment1.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "8f65c2ca-1a16-40c7-a29a-928e56d1dbd7",
+          "title": "verify Add job Title functionality",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Adding Job title with valid credentials",
+              "fullTitle": "verify Add job Title functionality Adding Job title with valid credentials",
+              "timedOut": null,
+              "duration": 29657,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');\ncy.get('input[name=\"username\"]').type(\"admin\");\ncy.get('input[name=\"password\"]').type(\"admin123\");\ncy.get('button[type=\"submit\"]').click();\ncy.get('a[href=\"/web/index.php/dashboard/index\"]').should(\"be.visible\");\ncy.get('a[href=\"/web/index.php/pim/viewPimModule\"]').click();\nfor (let j = 0; j < 10; j++) {\n  cy.contains(\"Add Employee\").click();\n  let r = (Math.random() + 1).toString(36).substring(7);\n  cy.get('input[placeholder=\"First Name\"]').type(\"abcd\" + r);\n  let s = (Math.random() + 1).toString(36).substring(7);\n  cy.get('input[placeholder=\"Last Name\"]').type(\"xyz\" + s);\n  cy.get('button[class=\"oxd-button oxd-button--medium oxd-button--secondary orangehrm-left-space\"]').click();\n  cy.get('div[class=\"orangehrm-edit-employee\"]').should(\"be.visible\");\n}\nfor (let i = 0; i < 10; i++) {\n  cy.contains(\"Employee List\").click();\n  cy.get('i[class=\"oxd-icon bi-trash\"]').eq(0).click();\n  cy.get('button[class=\"oxd-button oxd-button--medium oxd-button--label-danger orangehrm-button-margin\"]').click();\n}",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `div[class=\"orangehrm-edit-employee\"]`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `div[class=\"orangehrm-edit-employee\"]`, but never found it.\n    at Context.eval (webpack://cypressclasses/./cypress/e2e/modifiedassignment1.cy.js:17:55)",
+                "diff": null
+              },
+              "uuid": "f483029b-f2df-46fd-81ad-718660fb4a09",
+              "parentUUID": "8f65c2ca-1a16-40c7-a29a-928e56d1dbd7",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "f483029b-f2df-46fd-81ad-718660fb4a09"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 29657,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "reportDir": "cypress\\reports\\html\\.jsons"
+      },
+      "version": "6.2.0"
+    }
+  }
+}

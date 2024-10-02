@@ -1,0 +1,41 @@
+describe('verify Add job Title functionality', () => {
+  it.skip('Adding Job title with valid credentials', () => {
+    cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
+    cy.get('input[name="username"]').type("admin")
+    cy.get('input[name="password"]').type("admin123")
+    cy.get('button[type="submit"]').click()
+    cy.get('a[href="/web/index.php/dashboard/index"]').should("be.visible")
+    cy.get('a[href="/web/index.php/admin/viewAdminModule"]').click()
+    cy.contains("Job").click()
+    cy.contains("Job Titles").click()
+    cy.get('button[class="oxd-button oxd-button--medium oxd-button--secondary"]').click()
+    let r = (Math.random() + 1).toString(36).substring(7);
+    cy.get('input[class="oxd-input oxd-input--active"]').eq(1).type("Software Engineer"+r)
+    cy.get('textarea[placeholder="Type description here"]').type("Automation testing be done")
+    //cy.contains("Browse").click()
+    //cy.get('i[class="oxd-icon bi-upload oxd-file-input-icon"]').
+    //cy.get('div[class="orangehrm-header-container"]').should("be.visible")
+    cy.get('button[type="submit"]').click()
+    cy.get("div.oxd-toast.oxd-toast--success.oxd-toast-container--toast").should("be.visible")
+  })
+  it('Adding Job title with invalid credentials', () => {
+    cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
+    cy.get('input[name="username"]').type("admin")
+    cy.get('input[name="password"]').type("admin123")
+    cy.get('button[type="submit"]').click()
+    cy.get('a[href="/web/index.php/dashboard/index"]').should("be.visible")
+    cy.get('a[href="/web/index.php/admin/viewAdminModule"]').click()
+    cy.contains("Job").click()
+    cy.contains("Job Titles").click()
+    cy.get('button[class="oxd-button oxd-button--medium oxd-button--secondary"]').click()
+    //let r = (Math.random() + 1).toString(36).substring(7);
+    cy.get('input[class="oxd-input oxd-input--active"]').eq(1).type(" ")
+    cy.get('textarea[placeholder="Type description here"]').type("Automation testing be done")
+    //cy.contains("Browse").click()
+    //cy.get('i[class="oxd-icon bi-upload oxd-file-input-icon"]').
+    //cy.get('div[class="orangehrm-header-container"]').should("be.visible")
+    cy.get('button[type="submit"]').click()
+    cy.get('span[class="oxd-text oxd-text--span oxd-input-field-error-message oxd-input-group__message"]').should("be.visible")
+    //cy.get("div.oxd-toast.oxd-toast--success.oxd-toast-container--toast").should("be.visible")
+  })
+})
